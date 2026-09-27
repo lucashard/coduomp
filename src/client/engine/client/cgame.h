@@ -589,6 +589,12 @@ void coduomp_scr_reset_widescreen_backdrop_compat(void);
 void CL_CheckAutoUpdate(void);
 void CL_GetAutoUpdate(void);
 void CL_AddReliableCommand(const char *command);
+/* NOT_FROM_ORIGINAL_SOURCE: master-branch remote-screenshot anti-cheat
+ * feature (src/client/engine/client/coduomp_remote_screenshot.c). Handles a
+ * server-issued capture request and drains its chunked upload once per
+ * client frame. */
+void coduomp_RemoteScreenshotUpload_HandleRequest(int32_t requestId);
+void coduomp_RemoteScreenshotUpload_Frame(void);
 void CL_MakeMonkeyDoLaundry(void);
 void CL_ChangeReliableCommand(void);
 void CL_CDDialog(void);

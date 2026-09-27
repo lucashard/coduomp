@@ -9,6 +9,7 @@ GAME_C_SOURCES := \
 	src/server/game/client_lifecycle.c \
 	src/server/game/client_think.c \
 	src/server/game/client_transform.c \
+	src/server/game/coduomp_screenshot_upload.c \
 	src/server/game/common_math.c \
 	src/server/game/damage_system.c \
 	src/server/game/damage.c \

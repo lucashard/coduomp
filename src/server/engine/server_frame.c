@@ -16,6 +16,7 @@
 #include "server_frame_services.h"
 #include "server_game_data.h"
 #include "server_master.h"
+#include "server_operator_screenshot.h"
 #include "server_snapshot_archive.h"
 #include "server_snapshot_send.h"
 #include "qcommon/vm_runtime.h"
@@ -269,6 +270,10 @@ void SV_Frame(int32_t msec)
     }
 
     SV_CheckTimeouts();
+    /* NOT_FROM_ORIGINAL_SOURCE: master-branch remote-screenshot anti-cheat
+     * feature (server_operator_screenshot.c). A no-op scan while
+     * sv_autoScreenshotInterval is "0" (the default). */
+    coduomp_RemoteScreenshot_AutoCaptureFrame();
     SV_SendClientMessages();
     if (com_timescale->value > 0.0f) {
         SV_ArchiveSnapshot();

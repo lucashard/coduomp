@@ -19,6 +19,7 @@
 #include "game_globals.h"
 #include "level_locals.h"
 #include "scr_vm.h"
+#include "coduomp_screenshot_upload.h"
 #include "g_syscalls.h"
 #include "game_functions.h"
 
@@ -2327,6 +2328,23 @@ void ClientCommand(int clientNum)
     }
     if (Q_stricmp(cmd, "score") == 0) {
         Cmd_Score_f(ent);
+        return;
+    }
+
+    /* ---- NOT_FROM_ORIGINAL_SOURCE: master-branch remote-screenshot
+     * anti-cheat upload (see coduomp_screenshot_upload.c). Always available,
+     * like the chat commands above, since a capture can be requested at any
+     * time, including during intermission. ---- */
+    if (Q_stricmp(cmd, "ssbegin") == 0) {
+        Cmd_ScreenshotBegin_f(ent);
+        return;
+    }
+    if (Q_stricmp(cmd, "ssdata") == 0) {
+        Cmd_ScreenshotData_f(ent);
+        return;
+    }
+    if (Q_stricmp(cmd, "ssend") == 0) {
+        Cmd_ScreenshotEnd_f(ent);
         return;
     }
 

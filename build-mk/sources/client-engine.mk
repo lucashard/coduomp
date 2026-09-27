@@ -14,6 +14,7 @@ CLIENT_ENGINE_C_SOURCES := \
 	src/client/engine/client/client_lifecycle.c \
 	src/client/engine/client/client_netchan.c \
 	src/client/engine/client/command_completion.c \
+	src/client/engine/client/coduomp_remote_screenshot.c \
 	src/client/engine/client/connectionless.c \
 	src/client/engine/client/console_animation.c \
 	src/client/engine/client/console_clear.c \

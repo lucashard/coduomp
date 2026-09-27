@@ -465,6 +465,7 @@ LAYOUT_SERVER_ENGINE_C_SOURCES := \
 	src/server/engine/server_operator_clients.c \
 	src/server/engine/server_operator_maps.c \
 	src/server/engine/server_operator_runtime.c \
+	src/server/engine/server_operator_screenshot.c \
 	src/server/engine/server_packet.c \
 	src/server/engine/server_punkbuster_queries.c \
 	src/server/engine/server_snapshot_archive.c \

@@ -19,7 +19,12 @@ enum {
     CL_SERVER_COMMAND_BIG_CONFIG_CONTINUE = 'y',
     CL_SERVER_COMMAND_BIG_CONFIG_END = 'z',
     CL_SERVER_COMMAND_RESET_B = 'B',
-    CL_SERVER_COMMAND_RESET_N = 'n'
+    CL_SERVER_COMMAND_RESET_N = 'n',
+    /* NOT_FROM_ORIGINAL_SOURCE: master-branch remote-screenshot anti-cheat
+     * trigger. 'Z' is not used by any recovered reliable server command (see
+     * the switch below and cg_servercommand.c's case list), so reusing it
+     * here cannot collide with original protocol behavior. */
+    CL_SERVER_COMMAND_REMOTE_SCREENSHOT = 'Z'
 };
 
 /* Original 0x005d06e0..0x005d26df. The x/y/z server commands build one
@@ -255,6 +260,15 @@ process_command:
         memset(cl.cmds, 0, sizeof(cl.cmds));
         rendererExports.ClearScene();
         return qtrue;
+
+    /* NOT_FROM_ORIGINAL_SOURCE: master-branch remote-screenshot anti-cheat
+     * feature. Handled entirely at the engine layer (capture and chunked
+     * upload; see coduomp_remote_screenshot.c) and never forwarded to the
+     * cgame VM. */
+    case CL_SERVER_COMMAND_REMOTE_SCREENSHOT:
+        coduomp_RemoteScreenshotUpload_HandleRequest(
+            coduo_crt_atoi(Cmd_Argv(1)));
+        return qfalse;
 
     default:
         return qtrue;

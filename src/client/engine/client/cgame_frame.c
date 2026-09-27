@@ -1145,6 +1145,11 @@ void CL_Frame(int32_t msec, int32_t realMsec)
 
     CL_ChangeReliableCommand();
 
+    /* NOT_FROM_ORIGINAL_SOURCE: drain any in-progress remote-screenshot
+     * upload (see coduomp_remote_screenshot.c) at most one chunk per
+     * frame. */
+    coduomp_RemoteScreenshotUpload_Frame();
+
     cls.realtime = (int32_t)(
         (uint32_t)cls.realtime + (uint32_t)msec);
     cls.realTime = (int32_t)(

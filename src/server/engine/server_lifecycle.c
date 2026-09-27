@@ -8,6 +8,7 @@
 #include "server_game_lifecycle.h"
 #include "server_master.h"
 #include "server_operator_runtime.h"
+#include "server_operator_screenshot.h"
 #include "qcommon/server_runtime_types.h"
 #include "server_snapshot_archive.h"
 #include "server_snapshot_send.h"
@@ -144,6 +145,11 @@ void SV_Init(void)
     sv_wwwDownload = Cvar_Get("sv_wwwDownload", "0", CVAR_ARCHIVE);
     sv_wwwBaseURL = Cvar_Get("sv_wwwBaseURL", "", CVAR_ARCHIVE);
     sv_wwwDlDisconnected = Cvar_Get("sv_wwwDlDisconnected", "0", CVAR_ARCHIVE);
+
+    /* NOT_FROM_ORIGINAL_SOURCE: master-branch remote-screenshot anti-cheat
+     * feature (server_operator_screenshot.c). Appended after the recovered
+     * registration list rather than interleaved into it. */
+    coduomp_RemoteScreenshot_RegisterCvars();
 }
 
 void SV_FinalMessage(const char *message)

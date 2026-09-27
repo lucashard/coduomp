@@ -24,6 +24,7 @@ This is a feature-oriented summary of lasting, user-visible differences from the
 - Per-map `<map>_<gametype>.cfg` files load by the visible map name even when the map asset name contains color escapes.
 - **Server configuration:** add `set g_allowGlobalChat 0` to the server config or enter it in the server console to disable player general chat while preserving team, squad, private, scripted, and server-console messages. Set it to `1` to enable general chat again; `1` is the default.
 - Dedicated and listen servers skip external CD-key authorization by default.
+- **Remote screenshots (anti-cheat):** the `requestScreenshot <client-number-or-name>` operator command asks a connected client to silently capture and upload a screenshot for review, saved under `screenshots/remote/` on the server. The archived `sv_allowRemoteScreenshot` cvar (default `1`) is the master on/off switch, and `sv_autoScreenshotInterval` (default `0`, disabled) can enable automatic periodic captures from every connected client. See [Remote screenshots](docs/dedicated-engine.md#remote-screenshots).
 
 ### Platforms and display
 

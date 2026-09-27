@@ -11,6 +11,7 @@
 #include "server_master.h"
 #include "server_operator_clients.h"
 #include "server_operator_maps.h"
+#include "server_operator_screenshot.h"
 #include "qcommon/server_runtime_types.h"
 
 #include <stdint.h>
@@ -300,6 +301,9 @@ void SV_AddOperatorCommands(void)
     Cmd_AddCommand("gameCompleteStatus", SV_GameCompleteStatus_f);
     Cmd_AddCommand("devmap", SV_Map_f);
     Cmd_AddCommand("killserver", SV_KillServer_f);
+    /* NOT_FROM_ORIGINAL_SOURCE: master-branch remote-screenshot anti-cheat
+     * feature (server_operator_screenshot.c). */
+    Cmd_AddCommand("requestScreenshot", SV_RequestScreenshot_f);
 
     if (dedicated->integer != 0) {
         SV_AddDedicatedCommands();

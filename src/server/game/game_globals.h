@@ -130,6 +130,11 @@ extern vmCvar_t g_deadChat;
 extern vmCvar_t g_allowGlobalChat;
 /* NOT_FROM_ORIGINAL_SOURCE: optional list of game types permitted by votes. */
 extern vmCvar_t g_voteGameTypes;
+/* NOT_FROM_ORIGINAL_SOURCE: master-only remote-screenshot anti-cheat toggle.
+ * Mirrors the engine-registered "sv_allowRemoteScreenshot" cvar (see
+ * server_operator_screenshot.c); trap_Cvar_Register finds the same cvar
+ * rather than resetting it. */
+extern vmCvar_t g_allowRemoteScreenshot;
 extern vmCvar_t g_developer;
 extern vmCvar_t g_ScoresBanner_Allies;
 extern vmCvar_t g_ScoresBanner_Axis;
